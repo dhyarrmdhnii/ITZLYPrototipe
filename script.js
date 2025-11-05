@@ -7,7 +7,7 @@ const tryouts = [
         type: "SNBT",
         duration: "120 menit",
         price: "Gratis",
-        backgroundImage: "foto/to1.jpg",
+        backgroundImage: "to1.jpg",
         description: "Tryout SNBT 2023 - Paket A adalah simulasi ujian Seleksi Nasional Berbasis Tes (SNBT) yang dirancang untuk membantu persiapan siswa SMA/SMK/MA dalam menghadapi ujian masuk perguruan tinggi negeri. Tryout ini mencakup semua materi yang diujikan dalam SNBT dengan tingkat kesulitan yang sesuai dengan ujian sebenarnya."
     },
 
@@ -18,7 +18,7 @@ const tryouts = [
         type: "UTBK Saintek",
         duration: "180 menit",
         price: "Rp 50.000",
-        backgroundImage: "foto/to2.jpg",
+        backgroundImage: "to2.jpg",
         description: "Tryout UTBK Saintek - Edisi Premium adalah simulasi lengkap Ujian Tulis Berbasis Komputer untuk jurusan Saintek. Tryout ini dirancang khusus untuk siswa yang menargetkan jurusan kedokteran, teknik, MIPA, dan sejenisnya. Dilengkapi dengan pembahasan detail dan analisis kemampuan."
     },
     {
@@ -28,7 +28,7 @@ const tryouts = [
         type: "SIMAK UI",
         duration: "150 menit",
         price: "Rp 75.000",
-        backgroundImage: "foto/to3.jpg",
+        backgroundImage: "to3.jpg",
         description: "Tryout Ujian Mandiri UI (SIMAK UI) adalah simulasi ujian masuk Universitas Indonesia melalui jalur mandiri. Tryout ini disusun berdasarkan pola soal SIMAK UI tahun-tahun sebelumnya dan dilengkapi dengan prediksi soal tahun ini."
     },
     {
@@ -38,7 +38,7 @@ const tryouts = [
         type: "USM ITB",
         duration: "120 menit",
         price: "Rp 60.000",
-        backgroundImage: "foto/to4.jpg",
+        backgroundImage: "to4.jpg",
         description: "Tryout Ujian Mandiri ITB (USM ITB) adalah simulasi ujian seleksi mandiri Institut Teknologi Bandung. Tryout ini fokus pada penguasaan materi Saintek dengan tingkat kesulitan yang sesuai dan dilengkapi dengan tips mengerjakan soal dengan cepat dan tepat."
     },
     {
@@ -48,7 +48,7 @@ const tryouts = [
         type: "USM ITB",
         duration: "120 menit",
         price: "Rp 60.000",
-        backgroundImage: "foto/to5.jpg",
+        backgroundImage: "to5.jpg",
         description: "Tryout Ujian Mandiri ITB (USM ITB) adalah simulasi ujian seleksi mandiri Institut Teknologi Bandung. Tryout ini fokus pada penguasaan materi Saintek dengan tingkat kesulitan yang sesuai dan dilengkapi dengan tips mengerjakan soal dengan cepat dan tepat."
     },
     {
@@ -58,7 +58,7 @@ const tryouts = [
         type: "USM ITB",
         duration: "120 menit",
         price: "Rp 60.000",
-        backgroundImage: "foto/to6.jpg",
+        backgroundImage: "to6.jpg",
         description: "Tryout Ujian Mandiri ITB (USM ITB) adalah simulasi ujian seleksi mandiri Institut Teknologi Bandung. Tryout ini fokus pada penguasaan materi Saintek dengan tingkat kesulitan yang sesuai dan dilengkapi dengan tips mengerjakan soal dengan cepat dan tepat."
     }
 ];
