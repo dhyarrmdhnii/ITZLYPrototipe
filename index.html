@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITZLY - Wujudkan Kampus Impian</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo" onclick="showPage('home')">
+                    <i class="fas fa-graduation-cap logo-icon"></i>
+                    ITZLY
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('tryouts')">FindTryout</a></li>
+                    <li><a href="#" onclick="showPage('find-major')">FindMyMajor</a></li>
+                    <li class="dropdown">
+                        <a href="#">Menu <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="showPage('about')">About Us</a>
+                            <a href="#" onclick="showPage('contact')">Kontak</a>
+                        </div>
+                    </li>
+                    <li><a href="#" onclick="openModal('loginOptionsModal')">Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Wujudkan Kampus Impian dengan Rencana Belajar Terbaik!</h1>
+                    <p>ITZLY membantu belajar SMA merencanakan, memilih, dan menjadwalkan tryout secara efektif sesuai
+                        target PTN-mu.</p>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary">Mulai Cari Tryout Sekarang!</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="foto/1.png" alt="Siswa belajar bersama" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Front Finder Terpusat</h2>
+                    <p>Akses ribuan tryout SNBT, TKA, dan Ujian Mandiri dari berbagai penyelenggara di satu tempat.
+                        Cari, bandingkan, dan jadwalkan dengan mudah.</p>
+                    <a href="#" class="feature-link" onclick="showPage('tryouts')">Jelajahi Tryout <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="section-title">
+                    <h2>Fitur Unggulan ITZLY</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" onclick="showPage('tryouts')">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Cari Tryout Terbaik</h3>
+                        <p>Temukan tryout yang sesuai dengan kebutuhan dan target PTN-mu dari berbagai penyelenggara
+                            terpercaya.</p>
+                        <a href="#" class="feature-link" onclick="showPage('tryouts')">Cari Tryout <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="feature-card" onclick="openModal('scheduleModal')">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Jadwalkan Tryout</h3>
+                        <p>Atur jadwal tryout dengan mudah sesuai dengan waktu luang dan persiapan belajar-mu.</p>
+                        <a href="#" class="feature-link" onclick="openModal('scheduleModal')">Atur Jadwal <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="feature-card" onclick="showPage('find-major')">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>FindMyMajor AI</h3>
+                        <p>Temukan jurusan kuliah yang paling sesuai dengan minat, kepribadian, dan potensi akademikmu.
+                            Keputusan tepat, masa depan cerah.</p>
+                        <a href="#" class="feature-link" onclick="showPage('find-major')">Mulai Tes Minat <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Section -->
+        <section class="section" id="partnership">
+            <div class="container">
+                <div class="partnership">
+                    <h2>Kemitraan Eksklusif</h2>
+                    <p>Wadah promosi bagi lembaga bimbingan dan penyelenggara tryout untuk menjangkau ribuan pelajar
+                        yang sangat tertarget.</p>
+                    <button class="btn btn-primary" onclick="openModal('partnershipModal')">Informasi Kemitraan</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tryout List Page -->
+    <div id="tryouts-page" class="page" style="display: none;">
+        <section class="section">
+            <div class="container">
+                <div class="tryout-section">
+                    <div class="tryout-header">
+                        <h2>Tryout Tersedia</h2>
+                        <div class="search-bar">
+                            <input type="text" id="searchTryout" placeholder="Cari tryout...">
+                            <button class="btn btn-primary" onclick="searchTryouts()">Cari</button>
+                        </div>
+                    </div>
+                    <div class="tryout-grid" id="tryoutGrid">
+                        <!-- Tryout cards will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tryout Detail Page -->
+    <div id="tryout-detail-page" class="page" style="display: none;">
+        <div class="page-container">
+            <div class="tryout-detail">
+                <div class="tryout-info">
+                    <div class="tryout-image-large" id="tryoutDetailImage">
+                        <!-- Tryout image will be set by JavaScript -->
+                    </div>
+                    <div class="tryout-details">
+                        <h2 id="tryoutDetailTitle">Tryout Title</h2>
+                        <div class="tryout-meta-detail">
+                            <div class="meta-item">
+                                <i class="fas fa-building"></i>
+                                <span id="tryoutDetailProvider">Provider</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="tryoutDetailDuration">Duration</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span id="tryoutDetailType">Type</span>
+                            </div>
+                        </div>
+                        <div class="tryout-price" id="tryoutDetailPrice">Price</div>
+                        <p class="tryout-description" id="tryoutDetailDescription">Description</p>
+                        <div class="tryout-actions">
+                            <button class="btn btn-primary" onclick="openModal('registerTryoutModal')">Daftar
+                                Sekarang</button>
+                            <button class="btn btn-info" onclick="addToSchedule()">Tambah ke Jadwal</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h2>Ulasan Tryout</h2>
+
+                    <div class="review-form">
+                        <h3>Tulis Ulasan</h3>
+                        <div class="form-group">
+                            <label for="reviewRating">Rating</label>
+                            <select id="reviewRating">
+                                <option value="5">★★★★★ (Sangat Baik)</option>
+                                <option value="4">★★★★ (Baik)</option>
+                                <option value="3">★★★ (Cukup)</option>
+                                <option value="2">★★ (Kurang)</option>
+                                <option value="1">★ (Sangat Kurang)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewComment">Komentar</label>
+                            <textarea id="reviewComment"
+                                placeholder="Bagikan pengalaman Anda tentang tryout ini"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="submitReview()">Kirim Ulasan</button>
+                    </div>
+
+                    <div class="review-list" id="reviewList">
+                        <!-- Reviews will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FindMyMajor Page -->
+    <div id="find-major-page" class="page" style="display: none;">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>FindMyMajor AI</h1>
+                <p>Temukan jurusan kuliah yang paling sesuai dengan minat, kepribadian, dan potensi akademikmu</p>
+            </div>
+
+            <div class="page-content">
+                <h2>Tes Minat Jurusan</h2>
+                <p>FindMyMajor AI adalah alat canggih yang menggunakan kecerdasan buatan untuk membantu Anda menemukan
+                    jurusan kuliah yang paling sesuai dengan minat, kepribadian, dan potensi akademik Anda.</p>
+
+                <p>Dengan menganalisis berbagai faktor seperti:</p>
+                <ul>
+                    <li>Minat dan hobi Anda</li>
+                    <li>Kepribadian dan gaya belajar</li>
+                    <li>Nilai dan prestasi akademik</li>
+                    <li>Keterampilan dan bakat alami</li>
+                    <li>Tujuan karir di masa depan</li>
+                </ul>
+
+                <p>Kami dapat memberikan rekomendasi jurusan yang paling cocok untuk Anda, lengkap dengan informasi
+                    tentang:</p>
+                <ul>
+                    <li>Prospek karir setelah lulus</li>
+                    <li>Universitas terbaik untuk jurusan tersebut</li>
+                    <li>Persaingan dan peluang masuk</li>
+                    <li>Kurikulum dan mata kuliah yang akan dipelajari</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="btn btn-primary" onclick="startFindMajorTest()">Mulai Tes Minat Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FindMyMajor Test Page -->
+    <div id="find-major-test-page" class="page" style="display: none;">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Tes Minat Jurusan</h1>
+                <p>Jawab pertanyaan berikut untuk mendapatkan rekomendasi jurusan yang sesuai dengan minat dan bakat
+                    Anda</p>
+            </div>
+
+            <div class="page-content">
+                <div class="test-progress">
+                    <div class="test-progress-bar" id="testProgressBar"></div>
+                </div>
+
+                <div class="test-container" id="testContainer">
+                    <!-- Test questions will be generated by JavaScript -->
+                </div>
+
+                <div class="test-navigation">
+                    <button class="btn btn-outline" id="prevBtn" onclick="prevQuestion()"
+                        style="display: none;">Sebelumnya</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Selanjutnya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about-page" class="page" style="display: none;">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Tentang ITZLY</h1>
+                <p>Platform persiapan ujian PTN terdepan yang membantu siswa SMA meraih kampus impian</p>
+            </div>
+
+            <div class="page-content">
+                <div class="platform-description">
+                    <div class="platform-logo">
+                        <i class="fas fa-graduation-cap logo-large"></i>
+                        <h2>ITZLY</h2>
+                    </div>
+                    <div class="platform-text">
+                        <h2>Deskripsi Platform</h2>
+                        <p>ITZLY adalah platform inovatif yang dirancang khusus untuk membantu siswa SMA/Sederajat dalam
+                            mempersiapkan ujian masuk Perguruan Tinggi Negeri (PTN). Kami menyediakan akses ke ribuan
+                            tryout berkualitas dari berbagai penyelenggara terpercaya, memudahkan siswa untuk mencari,
+                            membandingkan, dan menjadwalkan tryout sesuai dengan target PTN yang diinginkan. Dengan
+                            fitur FindMyMajor AI, ITZLY juga membantu siswa menemukan jurusan kuliah yang paling
+                            sesuai dengan minat, kepribadian, dan potensi akademik mereka.</p>
+                    </div>
+                </div>
+
+                <h2>Visi Kami</h2>
+                <p>Menjadi platform terdepan dalam membantu siswa Indonesia meraih kampus impian mereka dengan persiapan
+                    yang terencana dan terarah.</p>
+
+                <h2>Misi Kami</h2>
+                <ul>
+                    <li>Menyediakan akses tryout berkualitas dari berbagai penyelenggara</li>
+                    <li>Membantu siswa menemukan jurusan yang sesuai dengan minat dan bakat</li>
+                    <li>Memberikan pengalaman belajar yang personal dan efektif</li>
+                    <li>Membangun komunitas belajar yang saling mendukung</li>
+                </ul>
+
+                <h2>Sejarah ITZLY</h2>
+                <p>ITZLY didirikan pada tahun 2025 oleh sekelompok mahasiswa yang peduli dengan tantangan yang dihadapi
+                    siswa SMA dalam mempersiapkan ujian masuk perguruan tinggi.</p>
+
+                <p>Kami melihat bahwa banyak siswa yang kesulitan dalam:</p>
+                <ul>
+                    <li>Memilih tryout yang berkualitas dan sesuai kebutuhan</li>
+                    <li>Menemukan jurusan yang tepat sesuai minat dan bakat</li>
+                    <li>Mengatur jadwal belajar yang efektif</li>
+                    <li>Mendapatkan informasi yang terpercaya tentang PTN</li>
+                </ul>
+
+                <p>Dengan teknologi dan pendekatan yang inovatif, ITZLY hadir untuk menjawab semua tantangan tersebut.
+                </p>
+
+                <div class="team-section">
+                    <h2>Tim Kami</h2>
+                    <p>ITZLY dikembangkan oleh tim yang terdiri dari:</p>
+
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Dhiya Rizky Ramadhani</h3>
+                            <div class="role">CEO & Pendiri</div>
+                            <p>Inovator muda yang percaya bahwa teknologi dapat mengubah cara siswa belajar dan meraih
+                                mimpi mereka.</p>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Tiur Rizki Sitinjak</h3>
+                            <div class="role">CFO</div>
+                            <p>Memanfaatkan keahlian finansial untuk memperkuat misi sosial dalam memperluas akses
+                                pendidikan berkualitas.
+                        </div>
+
+                        <div class="team-member">
+                            <div class="team-photo">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Dwi Putri Ramadhani</h3>
+                            <div class="role">CTO</div>
+                            <p>Pengembang teknologi dengan fokus pada solusi edukasi dan pengalaman pengguna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page" style="display: none;">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Kontak Kami</h1>
+                <p>Hubungi kami untuk pertanyaan, saran, atau informasi lebih lanjut tentang ITZLY</p>
+            </div>
+
+            <div class="page-content">
+                <h2>Informasi Kontak</h2>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@itzly.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Telepon</h3>
+                        <p>(021) 1234-5678</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Alamat</h3>
+                        <p>Jl. Pendidikan</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Jam Operasional</h3>
+                        <p>Senin - Jumat: 09:00 - 17:00</p>
+                    </div>
+                </div>
+
+                <h2>Kirim Pesan</h2>
+                <p>Isi form di bawah ini untuk mengirim pesan kepada kami. Kami akan membalas pesan Anda dalam waktu
+                    1x24 jam.</p>
+
+                <div class="form-group">
+                    <label for="contactName">Nama Lengkap</label>
+                    <input type="text" id="contactName" placeholder="Masukkan nama lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" placeholder="Masukkan email">
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Subjek</label>
+                    <input type="text" id="contactSubject" placeholder="Masukkan subjek">
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Pesan</label>
+                    <textarea id="contactMessage" placeholder="Tulis pesan Anda"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="sendContactMessage()">Kirim Pesan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ITZLY</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('about')">Tentang Kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Produk</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('tryouts')">Cari Tryout</a></li>
+                        <li><a href="#" onclick="showPage('find-major')">FindMyMajor AI</a></li>
+                        <li><a href="#" onclick="openModal('scheduleModal')">Jadwal Tryout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Bantuan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openModal('faqModal')">FAQ</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Kontak Kami</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ikuti Kami</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 ITZLY. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="loginOptionsModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginOptionsModal')">&times;</span>
+            <h2>Masuk ke ITZLY</h2>
+            <div class="login-options">
+                <div class="login-option" onclick="openModal('loginModal')">
+                    <h3>Masuk sebagai Pengguna</h3>
+                    <p>Akses tryout dan fitur FindMyMajor</p>
+                </div>
+                <div class="login-option" onclick="openModal('loginPartnerModal')">
+                    <h3>Masuk sebagai Mitra</h3>
+                    <p>Kelola tryout dan lihat statistik</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Masuk sebagai Pengguna</h2>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="login()">Masuk</button>
+            <p style="text-align: center; margin-top: 15px;">Belum punya akun? <a href="#"
+                    onclick="closeModal('loginModal'); openModal('registerModal')">Daftar di sini</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="loginPartnerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginPartnerModal')">&times;</span>
+            <h2>Masuk sebagai Mitra</h2>
+            <div class="form-group">
+                <label for="partnerEmail">Email</label>
+                <input type="email" id="partnerEmail" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="partnerPassword">Password</label>
+                <input type="password" id="partnerPassword" placeholder="Masukkan password">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="loginPartner()">Masuk</button>
+            <p style="text-align: center; margin-top: 15px;">Belum punya akun mitra? <a href="#"
+                    onclick="closeModal('loginPartnerModal'); openModal('registerPartnerModal')">Daftar di sini</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Daftar Akun Pengguna</h2>
+
+            <div class="form-group">
+                <label for="fullName">Nama Lengkap</label>
+                <input type="text" id="fullName" placeholder="Masukkan nama lengkap">
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" placeholder="Buat password">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Konfirmasi Password</label>
+                <input type="password" id="confirmPassword" placeholder="Konfirmasi password">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="register()">Daftar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="registerPartnerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerPartnerModal')">&times;</span>
+            <h2>Daftar Akun Mitra</h2>
+
+            <div class="form-group">
+                <label for="partnerName">Nama Lembaga</label>
+                <input type="text" id="partnerName" placeholder="Masukkan nama lembaga">
+            </div>
+            <div class="form-group">
+                <label for="partnerRegEmail">Email</label>
+                <input type="email" id="partnerRegEmail" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="partnerPhone">Nomor Telepon</label>
+                <input type="tel" id="partnerPhone" placeholder="Masukkan nomor telepon">
+            </div>
+            <div class="form-group">
+                <label for="partnerRegPassword">Password</label>
+                <input type="password" id="partnerRegPassword" placeholder="Buat password">
+            </div>
+            <div class="form-group">
+                <label for="partnerConfirmPassword">Konfirmasi Password</label>
+                <input type="password" id="partnerConfirmPassword" placeholder="Konfirmasi password">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="registerPartner()">Daftar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="registerTryoutModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerTryoutModal')">&times;</span>
+            <h2>Daftar Tryout</h2>
+            <div class="form-group">
+                <label for="tryoutName">Nama Lengkap</label>
+                <input type="text" id="tryoutName" placeholder="Masukkan nama lengkap">
+            </div>
+            <div class="form-group">
+                <label for="tryoutEmail">Email</label>
+                <input type="email" id="tryoutEmail" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="tryoutPhone">Nomor Telepon</label>
+                <input type="tel" id="tryoutPhone" placeholder="Masukkan nomor telepon">
+            </div>
+            <div class="form-group">
+                <label for="tryoutSchool">Sekolah</label>
+                <input type="text" id="tryoutSchool" placeholder="Masukkan nama sekolah">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="registerForCurrentTryout()">Daftar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="scheduleModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('scheduleModal')">&times;</span>
+            <h2>Jadwalkan Tryout</h2>
+            <div class="form-group">
+                <label for="tryoutSelect">Pilih Tryout</label>
+                <select id="tryoutSelect">
+                    <option value="">Pilih tryout</option>
+                    <option value="1">Tryout SNBT 2023 - Paket A</option>
+                    <option value="2">Tryout UTBK Saintek - Edisi Premium</option>
+                    <option value="3">Tryout Ujian Mandiri UI</option>
+                    <option value="4">Tryout Ujian Mandiri ITB</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="scheduleDate">Tanggal Tryout</label>
+                <input type="date" id="scheduleDate">
+            </div>
+            <div class="form-group">
+                <label for="scheduleTime">Waktu Tryout</label>
+                <input type="time" id="scheduleTime">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="scheduleTryout()">Jadwalkan</button>
+        </div>
+    </div>
+
+    <div class="modal" id="partnershipModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('partnershipModal')">&times;</span>
+            <h2>Informasi Kemitraan</h2>
+            <p>Isi formulir di bawah ini untuk informasi lebih lanjut tentang kemitraan dengan ITZLY.</p>
+            <div class="form-group">
+                <label for="partnerName">Nama Lembaga</label>
+                <input type="text" id="partnerName" placeholder="Masukkan nama lembaga">
+            </div>
+            <div class="form-group">
+                <label for="partnerEmail">Email</label>
+                <input type="email" id="partnerEmail" placeholder="Masukkan email">
+            </div>
+            <div class="form-group">
+                <label for="partnerPhone">Nomor Telepon</label>
+                <input type="tel" id="partnerPhone" placeholder="Masukkan nomor telepon">
+            </div>
+            <div class="form-group">
+                <label for="partnerMessage">Pesan</label>
+                <textarea id="partnerMessage" placeholder="Tulis pesan Anda"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="sendPartnershipRequest()">Kirim
+                Permohonan</button>
+        </div>
+    </div>
+
+    <div class="modal" id="faqModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('faqModal')">&times;</span>
+            <h2>FAQ - Pertanyaan Umum</h2>
+            <div class="faq-item">
+                <h3>Apa itu ITZLY?</h3>
+                <p>ITZLY adalah platform persiapan ujian PTN yang membantu siswa SMA merencanakan, memilih, dan
+                    menjadwalkan tryout secara efektif sesuai target PTN mereka.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Bagaimana cara menggunakan ITZLY?</h3>
+                <p>Anda dapat mendaftar akun ITZLY, kemudian menjelajahi berbagai tryout yang tersedia, menjadwalkan
+                    tryout, atau menggunakan fitur FindMyMajor AI untuk menemukan jurusan yang sesuai.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Apakah ITZLY gratis?</h3>
+                <p>ITZLY menyediakan berbagai tryout gratis dan berbayar. Anda dapat memilih tryout sesuai kebutuhan dan
+                    budget Anda.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Bagaimana cara menemukan tryout yang sesuai?</h3>
+                <p>Anda dapat menggunakan fitur pencarian di halaman Tryout atau filter berdasarkan jenis ujian,
+                    penyelenggara, atau harga.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
